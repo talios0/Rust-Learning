@@ -11,3 +11,7 @@ Cargo.lock
 
 /target
 **/*.rs.bk
+.history
+
+
+# End of https://www.gitignore.io/api/visualstudiocode
