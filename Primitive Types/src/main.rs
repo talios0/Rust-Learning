@@ -3,6 +3,7 @@ use std::mem;
 fn main() {
     primitive_types();
     operators();
+    scope_and_shadowing();
 }
 
 fn primitive_types() {
@@ -35,7 +36,7 @@ fn primitive_types() {
     //boolean
     let g = false;
     println!("g = {}, size = {} bytes", g, mem::size_of_val(&g));
-    
+
     let _f = 4>0; // true
 }
 
@@ -59,10 +60,23 @@ fn operators() {
     //bitwise operators (integers only)
     let c = 1 | 2; // | or & and ^and ^ exclusive or (xor) ! not
     // 0001  or 0010 = 11 = 3 (decimal)
-    println!("1|2 = {}", c)
+    println!("1|2 = {}", c);
     let two_to_10 = 1 << 10;
     println!("2^10 = {}", two_to_10);
 
     //logical operators
-    let pi_less_4 = std::f64:consts::PI < 4.0; // true
+    let pi_less_4 = std::f64::consts::PI < 4.0; // true
+}
+
+fn scope_and_shadowing() {
+    let a = 123;
+
+    { //scope - variables of the same name can be declared inside the scope. This will overwrite the outside scope while inside the scope. A change to a mutable variable will stay.
+        let a = 777;
+        let b = 456;
+        println!("inside, b = {}", b);
+        println!("inside, a = {}", a);
+    }
+    println!("outside, a = {}", a);
+
 }
