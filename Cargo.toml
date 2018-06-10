@@ -1,0 +1,6 @@
+[package]
+name = "rust-learning"
+version = "0.0.1"
+authors = ["Charles <20057606+talios0@users.noreply.github.com>"]
+
+[dependencies]
