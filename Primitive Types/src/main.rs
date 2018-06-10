@@ -1,6 +1,14 @@
 use std::mem;
 
+const MEANING_OF_LIFE:u8 = 42; // no fixed address
+static mut Z:i32 = 123; // This variable is unsafe. There will be a problem if more than a single operation tries to write/read to/from the address at a single time.
+
 fn main() {
+    println!("{}",MEANING_OF_LIFE);
+    unsafe { // Tells Rust I know this is unsafe and it will be handled it accordingly
+        println!("{}",Z);
+    }
+
     primitive_types();
     operators();
     scope_and_shadowing();
@@ -65,7 +73,7 @@ fn operators() {
     println!("2^10 = {}", two_to_10);
 
     //logical operators
-    let pi_less_4 = std::f64::consts::PI < 4.0; // true
+    let _pi_less_4 = std::f64::consts::PI < 4.0; // true
 }
 
 fn scope_and_shadowing() {
@@ -78,5 +86,4 @@ fn scope_and_shadowing() {
         println!("inside, a = {}", a);
     }
     println!("outside, a = {}", a);
-
 }
