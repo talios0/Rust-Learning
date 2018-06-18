@@ -1,11 +1,13 @@
 use std::mem;
 
 mod sh;
+mod controlflow;
 
 const MEANING_OF_LIFE:u8 = 42; // no fixed address
 static mut Z:i32 = 123; // This variable is unsafe. There will be a problem if more than a single operation tries to write/read to/from the address at a single time.
 
 fn main() {
+    controlflow::if_statement();
     sh::stack_and_heap();
     println!("{}",MEANING_OF_LIFE);
     unsafe { // Tells Rust I know this is unsafe and it will be handled it accordingly
